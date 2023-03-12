@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block baseblock%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+  <h2>Women Data</h2>
+  <table class="table" border="1px" align="center">
+    <thead>
+    <th>Id</th>
+    <th>Image</th>
+    <th>Name</th>
+    <th>Age</th>
+    <th>City</th>
+    <th>Salary</th>
+    <th>Update</th>
+    <th>Delete</th>
+    </thead>
+    {%for i in data%}
+    <tr>
+    <td>{{i.id}}</td>
+    <td><img height="50px" src="{{i.img.url}}" class="img"></td>
+    <td>{{i.name}}</td>
+    <td>{{i.age}}</td>
+    <td>{{i.city}}</td>
+    <td>{{i.salary}}</td>
+    <td><a class="btn btn-success" href="/women/update/{{i.id}}">Update</a></td>
+    <td><a class="btn btn-danger" href="/women/delete/{{i.id}}">Delete</a></td>
+    </tr>
+    {%endfor%}
+
+  </table>
+</center>
+</body>
+{%endblock%}
+</html>

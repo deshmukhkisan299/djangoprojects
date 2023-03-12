@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block baseblock%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{%static 'men/css/menform.css'%}">
+    <script src="{%static 'men/js/menform.js'%}"></script>
+</head>
+<body>
+<center>
+    <div id="formdiv">
+          <button class="btn btn-info" id = "sdbtn" onclick="display_data()"> Open Data</button>
+      <form id="inputform" method="post" enctype="multipart/form-data">
+          <h2>Women Data Form</h2>
+          {{form.as_p}}
+          {%csrf_token%}
+          <input id="button" type="submit">
+      </form>
+    </div>
+    {%if data%}
+    <div id="datadiv" style="position:relative;width:600px;">
+      <button class="btn btn-info" id = "sfbtn" style="display:none;" onclick="display_data()"> Open Form</button><br>
+        <a class="btn btn-success" onclick="document.getElementById('span').style.display='block'"> Edit Info By Id</a>
+        <a class="btn btn-danger"> Delete Info By Id</a>
+        <h2>Women Data</h2>
+        <table class="table" border="1px" style="width:500px;" align="center">
+                <thead>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>City</th>
+                    <th>Salary</th>
+                </thead>
+                {%for i in data%}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.name}}</td>
+                    <td>{{i.age}}</td>
+                    <td>{{i.city}}</td>
+                    <td>{{i.salary}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+    {%else%}
+    <h1>No Data</h1>
+    </div>
+    {%endif%}
+</center>
+
+</body>
+{%endblock%}
+</html>

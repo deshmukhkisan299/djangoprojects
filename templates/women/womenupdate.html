@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{%extends 'index.html'%}
+{%block baseblock%}
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{%static 'men/css/menform.css'%}">
+    <script src="{%static 'men/js/menform.js'%}"></script>
+</head>
+<body>
+<center>
+      <form id="inputform" method="post" enctype="multipart/form-data">
+          <h2>Update Women Data</h2>
+            <p>Img:: <input type="file" name="img"></p>
+            <p>Name:: <input type="text" name="name" value="{{obj.name}}"></p>
+            <p>Age:: <input type="text" name="age" value="{{obj.age}}"></p>
+            <p>City:: <input type="text" name="city" value="{{obj.city}}"></p>
+            <p>Salary:: <input type="text" name="salary" value="{{obj.salary}}"></p>
+          {%csrf_token%}
+          <input id="button" type="submit">
+      </form>
+</center>
+
+</body>
+{%endblock%}
+</html>
